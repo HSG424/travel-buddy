@@ -1,0 +1,190 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+/*
+SASS preprocessing techniques utilized below.
+*/
+
+/* sass variables */
+$secondary-color: gold;
+$border-color: #292929;
+$error-color: red;
+
+/* sass mixins */
+@mixin width-golden-ratio() {
+  width: 62%;
+}
+
+@mixin border-and-background() {
+  border: 1px solid $border-color;
+  background-color: #1f1f1f;
+}
+
+@mixin loader-svg() {
+  fill: $secondary-color;
+  opacity: 0.62;
+  transform-origin: 44% 50%;
+  animation: rotate 1.5s infinite linear;
+}
+
+@mixin sm-screen-width {
+  width: 100%;
+}
+
+/* keyframes for loader svg graphic */
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Cover Template for Bootsrap styling is in separate scss file
+@import "cover-template";
+
+.secondary-color {
+  color: $secondary-color;
+}
+
+/* weather styling */
+.accuweather-details {
+  display: none;
+  margin-top: 2.4rem;
+}
+
+.loader-weather {
+  svg {
+    height: 8rem;
+    width: 8rem;
+    @include loader-svg();
+  }
+}
+
+.btn-dark {
+  @include border-and-background();
+  @include width-golden-ratio();
+  font-weight: 400;
+  font-size: 1.1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  letter-spacing: 0.06rem;
+  border-radius: 9px;
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+}
+
+.switch-system-btn {
+  margin: 0.6rem auto 0.2rem auto;
+}
+
+.weather-panel-big {
+  margin-top: 1.1rem;
+
+  .weather-text {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .current-temp {
+    font-size: 1.7rem;
+    margin-top: 0.2rem;
+    letter-spacing: 0.02rem;
+  }
+
+  figure {
+    margin: 0;
+  }
+}
+
+.weather-panel-details {
+  @include border-and-background();
+  @include width-golden-ratio();
+  margin: 0.2rem auto 0.8rem auto;
+  border-radius: 6px;
+  padding: 1.7rem 0 1rem 0;
+
+  .location {
+    font-size: 1.2rem;
+    margin-bottom: 1.7rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $border-color;
+    letter-spacing: 0.01rem;
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.02rem;
+  }
+
+  .detail-slightly-bigger {
+    font-size: 1.1rem;
+  }
+}
+
+.accuweather-error {
+  @include width-golden-ratio();
+  margin: auto;
+  font-size: 2.1rem;
+  color: $error-color;
+  font-style: italic;
+  letter-spacing: 0.03rem;
+}
+
+/* translate styling */
+.main-content-translate {
+  @include width-golden-ratio();
+  display: none;
+  margin: 0.6rem auto 0.8rem auto;
+
+  .form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  label,
+  input,
+  select {
+    letter-spacing: 0.02rem;
+  }
+
+  button {
+    margin-top: 0.9rem;
+  }
+
+  .translate-results {
+    @include border-and-background();
+    display: none;
+    margin: 2.4rem auto 4rem;
+    font-size: 1.7rem;
+    border-radius: 11px;
+    padding: 1.6rem 1.5rem;
+    letter-spacing: 0.015rem;
+    color: $secondary-color;
+
+    .error {
+      color: $error-color;
+      font-style: italic;
+    }
+  }
+
+  .loader-translate {
+    svg {
+      height: 5rem;
+      width: 5rem;
+      margin-top: 1.2rem;
+      @include loader-svg();
+    }
+  }
+}
+
+/* breakpoint specific styling for smaller screens */
+@media (max-width: 767px) {
+  .weather-panel-details,
+  .main-content-translate {
+    @include sm-screen-width();
+  }
+}

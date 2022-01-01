@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Travel Buddy</title>
+
+    <link rel="shortcut icon" type="image/png" href="./src/img/favicon.png" />
+
+    <meta name="description" content="Travel Buddy" />
+    <meta name="author" content="Fred Han" />
+
+    <link rel="stylesheet" href="./src/sass/styles.scss" />
+
+    <script defer src="./src/js/index.js"></script>
+  </head>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">travelBuddy</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link nav-weather active" href="#">Weather</a>
+            <a class="nav-link nav-translate" href="#">Translate</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="main-content-accuweather">
+          <div class="accuweather-details">
+            <button type="button" class="btn btn-dark switch-system-btn">
+              Switch to <span class="switch-system-label"></span> System
+            </button>
+
+            <div class="weather-panel-big">
+              <p class="weather-text"></p>
+              <figure>
+                <img class="weather-icon" />
+              </figure>
+              <p class="current-temp secondary-color"></p>
+            </div>
+
+            <div class="weather-panel-details">
+              <p class="location"></p>
+              <!--
+            Below current conditions are treated as separate html elements because some have systems (Imperial/Metric) that are switchable 
+            and some do not. If all current conditions were lumped together under a single element it would be inefficient to update values 
+            when switching systems that do not have to be updated.
+            Also, the order in which they appear is important, so the application can't just lump all switchable elements under one element 
+            because then the application would be forced to display weather current conditions stats in a rigid and inflexible order (switchable
+            elements lumped together).
+            -->
+              <p>
+                Temperature<br /><span
+                  class="current-temp detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Feels Like<br /><span
+                  class="current-feels detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Shade Temp<br /><span
+                  class="current-shade detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                24-hour High/Low<br /><span class="detail-slightly-bigger"
+                  ><span class="twenty-four-high"></span> /
+                  <span class="twenty-four-low"></span
+                ></span>
+              </p>
+              <p>
+                Relative Humidity<br /><span
+                  class="relative-humidity detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Wind<br /><span
+                  class="wind-speed detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                UV Index<br /><span
+                  class="uv-index detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Visibility<br /><span
+                  class="visibility detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Precipitation (1 hour)<br /><span
+                  class="precip-hour detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Precipitation (24 hours)<br /><span
+                  class="precip-24 detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Latitude, Longitude<br /><span
+                  class="lat-long detail-slightly-bigger"
+                ></span>
+              </p>
+              <p>
+                Last Update:<br /><span
+                  class="last-update detail-slightly-bigger"
+                ></span>
+              </p>
+            </div>
+          </div>
+          <p class="accuweather-error"></p>
+        </div>
+
+        <div class="main-content-translate">
+          <form class="translate-form">
+            <div class="form-group">
+              <label>Text to Translate</label>
+              <input
+                type="text"
+                maxlength="50"
+                class="translate-text form-control"
+                placeholder="Enter Text"
+              />
+            </div>
+            <div class="form-group">
+              <label>From</label>
+              <select class="translate-from form-control"></select>
+            </div>
+            <div class="form-group">
+              <label>To</label>
+              <select class="translate-to form-control"></select>
+            </div>
+            <button type="submit" class="btn btn-dark">Translate</button>
+          </form>
+          <div class="translate-loader"></div>
+          <p class="translate-results"></p>
+        </div>
+      </div>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Powered by
+            <a
+              href="https://developer.accuweather.com/apis"
+              target="_blank"
+              class="secondary-color"
+              >AccuWeather API</a
+            >
+            |
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"
+              target="_blank"
+              class="secondary-color"
+              >Geolocation API</a
+            >
+            |
+            <a
+              href="https://mymemory.translated.net/doc/spec.php"
+              target="_blank"
+              class="secondary-color"
+              >MyMemory API</a
+            >
+          </p>
+        </div>
+      </footer>
+      <!--<svg></svg>-->
+    </div>
+  </body>
+</html>
